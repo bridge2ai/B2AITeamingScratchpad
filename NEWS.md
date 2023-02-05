@@ -1,7 +1,10 @@
+# shinyB2AIDashboard 0.1.2
+
+* Beautifying a bit with pkgdown settings
+
 # shinyB2AIDashboard 0.1.1
 
 * Update README.Rmd and README.md with more detail
-
 
 # shinyB2AIDashboard 0.1.0
 

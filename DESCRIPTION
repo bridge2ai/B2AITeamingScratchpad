@@ -1,9 +1,15 @@
 Package: shinyB2AIDashboard
 Title: Provide Functionality For Bridge2AI Dashboard(s)
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: 
+  c(
+    person("Julie", "McMurry", "A" , "julie@tislab.org", role = c("ctb"),
+           comment = c(ORCID = "0000-0002-9353-5498", "Largely responsible for the underlying data from members")),
+    person("Corey", "Cox", , "corey@tislab", role = c("ctb"),
+           comment = c(ORCID = "0000-0001-9042-5982")),
     person("Sean", "Davis", , "seandavi@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8991-6458"))
+    )
 Description: The Bridge2AI program comprises an effort and teams funded
     by the NIH CommonFund to accelerate ethical AI dataset production
     and advance AI in biomedical research. This package and functionality
@@ -22,6 +28,8 @@ Suggests:
     pkgdown,
     testthat (>= 3.0.0),
     rbibtools
+URL: https://github.com/seandavi/shinyB2AIDashboard
+BugReports: https://github.com/seandavi/shinyB2AIDashboard/issues/new
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
