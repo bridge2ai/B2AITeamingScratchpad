@@ -1,10 +1,8 @@
+url: https://seandavi.github.io/shinyB2AIDashboard/
 template:
   bootstrap: 5
   bootswatch: cosmo
-  theme: atom-one-light
+  theme: a11y-light
 
 navbar:
   bg: primary
-  type: dark
-  structure:
-    right: [search, github]
