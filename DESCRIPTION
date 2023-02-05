@@ -28,7 +28,8 @@ Suggests:
     pkgdown,
     testthat (>= 3.0.0),
     rbibutils
-URL: https://github.com/seandavi/shinyB2AIDashboard
+URL: https://github.com/seandavi/shinyB2AIDashboard,
+    https://seandavi.github.io/shinyB2AIDashboard/
 BugReports: https://github.com/seandavi/shinyB2AIDashboard/issues/new
 License: MIT + file LICENSE
 Encoding: UTF-8
