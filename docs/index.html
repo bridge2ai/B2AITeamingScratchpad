@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="index.html">shinyB2AIDashboard</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,35 +66,82 @@
 </h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The goal of shinyB2AIDashboard is to …</p>
+<p>The goal of shinyB2AIDashboard is to support dashboarding for the Bridge2AI Teaming Core. It contains functionality to:</p>
+<ul>
+<li>Collate data about Bridge2AI Core and data generation program (DGP) members</li>
+<li>Collate publications for Program members</li>
+<li>Develop R shiny-based dashboard(s)</li>
+</ul>
+<p>Still to do is to develop said dashboards</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>You can install the development version of shinyB2AIDashboard like so:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'seandavi/shinyB2AIDashboard'</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <p>This is a basic example which shows you how to solve a common problem:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">shinyB2AIDashboard</span><span class="op">)</span></span>
-<span><span class="co">## basic example code</span></span></code></pre></div>
-<p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">shinyB2AIDashboard</span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="fetch-all-publications-by-orcid">Fetch all publications by orcid<a class="anchor" aria-label="anchor" href="#fetch-all-publications-by-orcid"></a>
+</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      speed           dist       </span></span>
-<span><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
-<span><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
-<span><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
-<span><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
-<span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code><a href="https://devtools.r-lib.org/reference/build_rmd.html" class="external-link">devtools::build_readme()</a></code> is handy for this. You could also use GitHub Actions to re-render <code>README.Rmd</code> every time you push. An example workflow can be found here: <a href="https://github.com/r-lib/actions/tree/v1/examples" class="external-link uri">https://github.com/r-lib/actions/tree/v1/examples</a>.</p>
-<p>You can also embed plots, for example:</p>
-<p><img src="reference/figures/README-pressure-1.png" width="100%"></p>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub and CRAN.</p>
+<code class="sourceCode R"><span><span class="va">orcid_example</span> <span class="op">=</span> <span class="st">'0000-0002-8991-6458'</span></span>
+<span><span class="va">works_df</span> <span class="op">=</span> <span class="fu"><a href="reference/works_from_orcid.html">works_from_orcid</a></span><span class="op">(</span><span class="va">orcid_example</span><span class="op">)</span></span></code></pre></div>
+<p>The result is a data.frame with some minimal information about each publication.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">works_df</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "title"    "doi"      "pmid"     "pmc"      "put_code" "orcid"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">works_df</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 98  6</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">works_df</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                                                                                                                              title</span></span>
+<span><span class="co">#&gt; 1 GenomicSuperSignature facilitates interpretation of RNA-seq experiments through robust, efficient comparison to public databases</span></span>
+<span><span class="co">#&gt; 2       HGNChelper: identification and correction of invalid gene symbols for human and mouse [version 2; peer review: 3 approved]</span></span>
+<span><span class="co">#&gt; 3                                                                                 Ten simple rules for large-scale data processing</span></span>
+<span><span class="co">#&gt; 4            GenomicSuperSignature: interpretation of RNA-seq experiments through robust, efficient comparison to public databases</span></span>
+<span><span class="co">#&gt; 5                                            HGNChelper: identification and correction of invalid gene symbols for human and mouse</span></span>
+<span><span class="co">#&gt; 6                                            HGNChelper: identification and correction of invalid gene symbols for human and mouse</span></span>
+<span><span class="co">#&gt;                              doi pmid  pmc  put_code               orcid</span></span>
+<span><span class="co">#&gt; 1     10.1038/s41467-022-31411-3 &lt;NA&gt; &lt;NA&gt; 115044512 0000-0002-8991-6458</span></span>
+<span><span class="co">#&gt; 2 10.12688/f1000research.28033.2 &lt;NA&gt; &lt;NA&gt;  85614478 0000-0002-8991-6458</span></span>
+<span><span class="co">#&gt; 3   10.1371/journal.pcbi.1009757 &lt;NA&gt; &lt;NA&gt; 107995204 0000-0002-8991-6458</span></span>
+<span><span class="co">#&gt; 4      10.1101/2021.05.26.445900 &lt;NA&gt; &lt;NA&gt;  94544767 0000-0002-8991-6458</span></span>
+<span><span class="co">#&gt; 5 10.12688/f1000research.28033.1 &lt;NA&gt; &lt;NA&gt;  85615672 0000-0002-8991-6458</span></span>
+<span><span class="co">#&gt; 6      10.1101/2020.09.16.300632 &lt;NA&gt; &lt;NA&gt;  83594630 0000-0002-8991-6458</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="fetch-details-about-one-of-the-publications">Fetch details about one of the publications<a class="anchor" aria-label="anchor" href="#fetch-details-about-one-of-the-publications"></a>
+</h3>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">work_details</span> <span class="op">=</span> <span class="fu"><a href="reference/orcid_work_detail.html">orcid_work_detail</a></span><span class="op">(</span><span class="va">orcid_example</span>, <span class="va">works_df</span><span class="op">$</span><span class="va">put_code</span><span class="op">[</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">work_details</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 1</span></span>
+<span><span class="co">#&gt; Columns: 13</span></span>
+<span><span class="co">#&gt; $ orcid          &lt;chr&gt; "0000-0002-8991-6458"</span></span>
+<span><span class="co">#&gt; $ put_code       &lt;int&gt; 83594630</span></span>
+<span><span class="co">#&gt; $ created_at     &lt;dttm&gt; 2020-11-17 11:45:46</span></span>
+<span><span class="co">#&gt; $ updated_at     &lt;dttm&gt; 2022-05-31 08:33:36</span></span>
+<span><span class="co">#&gt; $ citation_type  &lt;chr&gt; "bibtex"</span></span>
+<span><span class="co">#&gt; $ citation_value &lt;chr&gt; "@article{Oh_2020,\n\tdoi = {10.1101/2020.09.16.300632}…</span></span>
+<span><span class="co">#&gt; $ work_type      &lt;chr&gt; "other"</span></span>
+<span><span class="co">#&gt; $ contributors   &lt;lgl&gt; NA</span></span>
+<span><span class="co">#&gt; $ url            &lt;chr&gt; "https://doi.org/10.1101/2020.09.16.300632"</span></span>
+<span><span class="co">#&gt; $ doi            &lt;chr&gt; "10.1101/2020.09.16.300632"</span></span>
+<span><span class="co">#&gt; $ pmid           &lt;lgl&gt; NA</span></span>
+<span><span class="co">#&gt; $ pmc            &lt;lgl&gt; NA</span></span>
+<span><span class="co">#&gt; $ abstract       &lt;lgl&gt; NA</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="dashboards">Dashboards<a class="anchor" aria-label="anchor" href="#dashboards"></a>
+</h2>
+<p>Work in progress….</p>
 </div>
 <div class="section level2">
 <h2 id="the-bridge2ai-program">The Bridge2AI Program<a class="anchor" aria-label="anchor" href="#the-bridge2ai-program"></a>

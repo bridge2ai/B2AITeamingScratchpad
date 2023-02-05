@@ -6,14 +6,23 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of shinyB2AIDashboard is to …
+The goal of shinyB2AIDashboard is to support dashboarding for the
+Bridge2AI Teaming Core. It contains functionality to:
+
+- Collate data about Bridge2AI Core and data generation program (DGP)
+  members
+- Collate publications for Program members
+- Develop R shiny-based dashboard(s)
+
+Still to do is to develop said dashboards
 
 ## Installation
 
 You can install the development version of shinyB2AIDashboard like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+library(remotes)
+remotes::install_github('seandavi/shinyB2AIDashboard')
 ```
 
 ## Example
@@ -22,35 +31,65 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(shinyB2AIDashboard)
-## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+### Fetch all publications by orcid
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+orcid_example = '0000-0002-8991-6458'
+works_df = works_from_orcid(orcid_example)
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+The result is a data.frame with some minimal information about each
+publication.
 
-You can also embed plots, for example:
+``` r
+colnames(works_df)
+#> [1] "title"    "doi"      "pmid"     "pmc"      "put_code" "orcid"
+dim(works_df)
+#> [1] 98  6
+head(works_df)
+#>                                                                                                                              title
+#> 1 GenomicSuperSignature facilitates interpretation of RNA-seq experiments through robust, efficient comparison to public databases
+#> 2       HGNChelper: identification and correction of invalid gene symbols for human and mouse [version 2; peer review: 3 approved]
+#> 3                                                                                 Ten simple rules for large-scale data processing
+#> 4            GenomicSuperSignature: interpretation of RNA-seq experiments through robust, efficient comparison to public databases
+#> 5                                            HGNChelper: identification and correction of invalid gene symbols for human and mouse
+#> 6                                            HGNChelper: identification and correction of invalid gene symbols for human and mouse
+#>                              doi pmid  pmc  put_code               orcid
+#> 1     10.1038/s41467-022-31411-3 <NA> <NA> 115044512 0000-0002-8991-6458
+#> 2 10.12688/f1000research.28033.2 <NA> <NA>  85614478 0000-0002-8991-6458
+#> 3   10.1371/journal.pcbi.1009757 <NA> <NA> 107995204 0000-0002-8991-6458
+#> 4      10.1101/2021.05.26.445900 <NA> <NA>  94544767 0000-0002-8991-6458
+#> 5 10.12688/f1000research.28033.1 <NA> <NA>  85615672 0000-0002-8991-6458
+#> 6      10.1101/2020.09.16.300632 <NA> <NA>  83594630 0000-0002-8991-6458
+```
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+### Fetch details about one of the publications
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+``` r
+work_details = orcid_work_detail(orcid_example, works_df$put_code[6])
+dplyr::glimpse(work_details)
+#> Rows: 1
+#> Columns: 13
+#> $ orcid          <chr> "0000-0002-8991-6458"
+#> $ put_code       <int> 83594630
+#> $ created_at     <dttm> 2020-11-17 11:45:46
+#> $ updated_at     <dttm> 2022-05-31 08:33:36
+#> $ citation_type  <chr> "bibtex"
+#> $ citation_value <chr> "@article{Oh_2020,\n\tdoi = {10.1101/2020.09.16.300632}…
+#> $ work_type      <chr> "other"
+#> $ contributors   <lgl> NA
+#> $ url            <chr> "https://doi.org/10.1101/2020.09.16.300632"
+#> $ doi            <chr> "10.1101/2020.09.16.300632"
+#> $ pmid           <lgl> NA
+#> $ pmc            <lgl> NA
+#> $ abstract       <lgl> NA
+```
+
+## Dashboards
+
+Work in progress….
 
 ## The Bridge2AI Program
 

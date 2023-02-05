@@ -1,6 +1,6 @@
 Package: shinyB2AIDashboard
 Title: Provide Functionality For Bridge2AI Dashboard(s)
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: 
     person("Sean", "Davis", , "seandavi@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8991-6458"))
