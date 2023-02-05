@@ -12,7 +12,7 @@ vector has a specified key in it."><!-- mathjax --><script src="https://cdnjs.cl
     
     <a class="navbar-brand me-2" href="../index.html">shinyB2AIDashboard</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,6 +58,16 @@ vector has a specified key in it.</p>
     </div>
 
     <div class="section level2">
+    <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
+    <dl><dt>l</dt>
+<dd><p>an object with names</p></dd>
+
+
+<dt>key</dt>
+<dd><p>the name that you want to retrieve</p></dd>
+
+</dl></div>
+    <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other utilities: 
 <code><a href="safe_get.html">safe_get</a>()</code></p></div>
@@ -67,10 +77,9 @@ vector has a specified key in it.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">l</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a<span class="op">=</span><span class="fl">1</span>,b<span class="op">=</span><span class="fl">2</span>,c<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">has_key</span><span class="op">(</span><span class="va">l</span>, <span class="st">'b'</span><span class="op">)</span> <span class="co">#TRUE</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in has_key(l, "b"):</span> could not find function "has_key"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span><span class="fu">has_key</span><span class="op">(</span><span class="va">l</span>, <span class="st">'not_present'</span><span class="op">)</span> <span class="co">#FALSE</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in has_key(l, "not_present"):</span> could not find function "has_key"</span>
-<span class="r-in"><span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

@@ -1,6 +1,6 @@
 Package: shinyB2AIDashboard
 Title: Provide Functionality For Bridge2AI Dashboard(s)
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: 
   c(
     person("Julie", "McMurry", "A" , "julie@tislab.org", role = c("ctb"),
@@ -27,7 +27,7 @@ Imports: httr,
 Suggests: 
     pkgdown,
     testthat (>= 3.0.0),
-    rbibtools
+    rbibutils
 URL: https://github.com/seandavi/shinyB2AIDashboard
 BugReports: https://github.com/seandavi/shinyB2AIDashboard/issues/new
 License: MIT + file LICENSE

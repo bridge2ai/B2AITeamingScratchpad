@@ -1,3 +1,7 @@
+# shinyB2AIDashboard 0.1.3
+
+* Perform some cleanup based on devtools::check() output
+
 # shinyB2AIDashboard 0.1.2
 
 * Beautifying a bit with pkgdown settings

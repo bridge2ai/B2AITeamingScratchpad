@@ -3,6 +3,10 @@
 #' Test whether a list, data.frame(columns), or a named
 #' vector has a specified key in it.
 #'
+#' @param l an object with names
+#' @param key the name that you want to retrieve
+#'
+#'
 #' @family utilities
 #'
 #' @keywords Internal
@@ -12,7 +16,7 @@
 #' has_key(l, 'b') #TRUE
 #' has_key(l, 'not_present') #FALSE
 #'
-#'
+#' @export
 has_key <- function(l, key) {
     return(key %in% names(l))
 }

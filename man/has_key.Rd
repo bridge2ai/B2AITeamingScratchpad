@@ -6,6 +6,11 @@
 \usage{
 has_key(l, key)
 }
+\arguments{
+\item{l}{an object with names}
+
+\item{key}{the name that you want to retrieve}
+}
 \description{
 Test whether a list, data.frame(columns), or a named
 vector has a specified key in it.
@@ -14,7 +19,6 @@ vector has a specified key in it.
 l = list(a=1,b=2,c=3)
 has_key(l, 'b') #TRUE
 has_key(l, 'not_present') #FALSE
-
 
 }
 \seealso{
