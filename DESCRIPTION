@@ -1,6 +1,6 @@
 Package: B2AITeamingScratchpad
 Title: Just a scratchpad for odds-and-ends analyses of Bridge2AI teaming stuff
-Version: 0.1.5
+Version: 0.1.6
 Authors@R: 
   c(
     person("Julie", "McMurry", "A" , "julie@tislab.org", role = c("ctb"),
@@ -24,12 +24,10 @@ Imports: httr,
     googlesheets4,
     lubridate,
     ggplot2
-Suggests: d3heatmap,
+Suggests: heatmaply,
     pkgdown,
     testthat (>= 3.0.0),
     rbibutils
-Remotes:
-    talgalili/d3heatmap
 URL: https://github.com/seandavi/bridge2ai_teaming_scratchpad,
     https://seandavi.github.io/bridge2ai_teaming_scratchpad/
 BugReports: https://github.com/seandavi/bridge2ai_teaming_scratchpad/issues/new

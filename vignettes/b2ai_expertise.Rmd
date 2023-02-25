@@ -17,7 +17,9 @@ library(tidyr)
 library(ComplexHeatmap)
 library(readr)
 library(DT)
-library(shinyB2AIDashboard)
+library(B2AITeamingScratchpad)
+library(heatmaply)
+library(ggplot2)
 ```
 
 ## Load data
@@ -46,7 +48,6 @@ head(person_expertise)
 ## Histogram of expertise count by person
 
 ```{r}
-library(ggplot2)
 expertise_count_by_person = person_expertise |> 
   dplyr::group_by(fullName) |>
   dplyr::summarise(count=dplyr::n())
@@ -83,6 +84,7 @@ person_by_expertise = person_expertise |>
 # Now a matrix of 0/1 (integer)
 person_by_expertise_01 = as.matrix(person_by_expertise[,-1])
 colnames(person_by_expertise_01) = colnames(person_by_expertise[,-1])
+rownames(person_by_expertise_01) = person_by_expertise$`expertise-all`
 person_by_expertise_01[is.na(person_by_expertise_01)] = 0
 ```
 
@@ -93,7 +95,8 @@ And now the two-dimensional (heatmap) plot that is interactive.
 -   Double-click to return to full dataset:
 
 ```{r}
-d3heatmap::d3heatmap(person_by_expertise_01,col = c('grey95','black'),show_grid = FALSE)
+library(heatmaply)
+heatmaply::heatmaply(person_by_expertise_01,col = c('lightblue','black'), hide_colorbar=TRUE, fontsize_row=4, fontsize_col=4, plot_method='ggplot')
 ```
 
 To make a large PDF version of the figure, use the following code:
