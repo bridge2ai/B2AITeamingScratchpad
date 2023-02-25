@@ -1,28 +1,19 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# shinyB2AIDashboard
+# B2AITeamingScratchpad
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of shinyB2AIDashboard is to support dashboarding for the
-Bridge2AI Teaming Core. It contains functionality to:
-
-- Collate data about Bridge2AI Core and data generation program (DGP)
-  members
-- Collate publications for Program members
-- Develop R shiny-based dashboard(s)
-
-Still to do is to develop said dashboards
-
 ## Installation
 
-You can install the development version of shinyB2AIDashboard like so:
+You can install the development version of B2AITeamingScratchpad like
+so:
 
 ``` r
 library(remotes)
-remotes::install_github('seandavi/shinyB2AIDashboard')
+remotes::install_github('seandavi/B2AITeamingScratchpad')
 ```
 
 ## Example
@@ -30,7 +21,7 @@ remotes::install_github('seandavi/shinyB2AIDashboard')
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-library(shinyB2AIDashboard)
+library(B2AITeamingScratchpad)
 ```
 
 ### Fetch all publications by orcid
@@ -87,9 +78,7 @@ dplyr::glimpse(work_details)
 #> $ abstract       <lgl> NA
 ```
 
-## Dashboards
-
-Work in progress….
+## Bridge2AI Expertise analysis
 
 ## The Bridge2AI Program
 

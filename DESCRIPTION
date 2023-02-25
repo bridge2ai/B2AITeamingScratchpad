@@ -1,5 +1,5 @@
-Package: shinyB2AIDashboard
-Title: Provide Functionality For Bridge2AI Dashboard(s)
+Package: B2AITeamingScratchpad
+Title: Just a scratchpad for odds-and-ends analyses of Bridge2AI teaming stuff
 Version: 0.1.4
 Authors@R: 
   c(
@@ -13,7 +13,7 @@ Authors@R:
 Description: The Bridge2AI program comprises an effort and teams funded
     by the NIH CommonFund to accelerate ethical AI dataset production
     and advance AI in biomedical research. This package and functionality
-    supports data collection, munging, and dashboard production as needed
+    supports data collection, munging, and analyses as needed
     by the Bridge2AI Teaming Core.
 Imports: httr,
     jsonlite,
@@ -24,14 +24,15 @@ Imports: httr,
     markdown,
     rmarkdown,
     googlesheets4,
-    lubridate
-Suggests: 
+    lubridate,
+    ggplot2
+Suggests: d3heatmap,
     pkgdown,
     testthat (>= 3.0.0),
     rbibutils
-URL: https://github.com/seandavi/shinyB2AIDashboard,
-    https://seandavi.github.io/shinyB2AIDashboard/
-BugReports: https://github.com/seandavi/shinyB2AIDashboard/issues/new
+URL: https://github.com/seandavi/bridge2ai_teaming_scratchpad,
+    https://seandavi.github.io/bridge2ai_teaming_scratchpad/
+BugReports: https://github.com/seandavi/bridge2ai_teaming_scratchpad/issues/new
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

@@ -1,0 +1,112 @@
+---
+title: "Bridge2AI self-identified expertise analysis"
+author: "Sean Davis"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Bridge2AI self-identified expertise analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Setup
+
+```{r message=FALSE}
+library(dplyr)
+library(tidyr)
+library(ComplexHeatmap)
+library(readr)
+library(DT)
+library(shinyB2AIDashboard)
+```
+
+## Load data
+
+Just to keep things simple, I exported the `dsSrc` tab as a csv file from [this spreadsheet](https://docs.google.com/spreadsheets/d/1hSSzTlXJUrSMNfzvISZDAsmViOU5dWfU48a7xU9_iss/edit?usp=sharing) (owned by Julie).
+
+```{r message=FALSE}
+dssrc = dssrc_dataframe()
+dplyr::glimpse(dssrc)
+```
+
+# Distributions
+
+```{r}
+person_expertise = dssrc |> 
+  dplyr::select(fullName, `expertise-all`) |> 
+  dplyr::arrange(fullName, `expertise-all`) |> 
+  dplyr::mutate(`expertise-all`=tolower(`expertise-all`)) |> 
+  dplyr::mutate(`expertise-all` = gsub('\\(.*\\)', '', `expertise-all`)) |>
+  tidyr::separate_longer_delim(`expertise-all`, ', ') |> 
+  unique()
+
+head(person_expertise)
+```
+
+## Histogram of expertise count by person
+
+```{r}
+library(ggplot2)
+expertise_count_by_person = person_expertise |> 
+  dplyr::group_by(fullName) |>
+  dplyr::summarise(count=dplyr::n())
+ggplot(expertise_count_by_person, aes(x=count)) + 
+  geom_histogram() +
+  ggplot2::ggtitle("Expertise Count By Person", "All onboarded individuals") +
+  ggplot2::ylab('People')
+```
+
+```{r}
+people_count_by_expertise = person_expertise |>
+  dplyr::group_by(`expertise-all`) |>
+  dplyr::summarise(count=dplyr::n()) |> 
+  dplyr::arrange(dplyr::desc(count))
+ggplot(people_count_by_expertise, aes(x=count)) +
+  ggplot2::geom_histogram() +
+  ggplot2::ggtitle("Person Count per Expertise", "All onboarded individuals") +
+  ggplot2::ylab('Expertise')
+```
+
+## Top Expertise
+
+```{r}
+DT::datatable(people_count_by_expertise)
+```
+
+## Two-dimensional clustering
+
+```{r}
+person_by_expertise = person_expertise |> 
+  dplyr::mutate(value=1) |> 
+  tidyr::pivot_wider(names_from=fullName, values_from = value)
+
+# Now a matrix of 0/1 (integer)
+person_by_expertise_01 = as.matrix(person_by_expertise[,-1])
+colnames(person_by_expertise_01) = colnames(person_by_expertise[,-1])
+person_by_expertise_01[is.na(person_by_expertise_01)] = 0
+```
+
+And now the two-dimensional (heatmap) plot that is interactive.
+
+-   Draw a box to zoom as needed.
+
+-   Double-click to return to full dataset:
+
+```{r}
+d3heatmap::d3heatmap(person_by_expertise_01,col = c('grey95','black'),show_grid = FALSE)
+```
+
+To make a large PDF version of the figure, use the following code:
+
+```{r}
+pdf('expertise_matrix.pdf',height=30,width=50)
+ComplexHeatmap::Heatmap(
+  person_by_expertise_01, 
+  column_names_gp = grid::gpar(fontsize=12), 
+  row_names_gp = grid::gpar(fontsize=12), 
+  col=c('gray95', 'black'), 
+  row_dend_width = unit(30, "mm"), 
+  column_dend_height = unit(30, 'mm'))
+dev.off()
+```
+
