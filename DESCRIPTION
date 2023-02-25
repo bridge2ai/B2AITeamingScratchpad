@@ -1,12 +1,10 @@
 Package: B2AITeamingScratchpad
 Title: Just a scratchpad for odds-and-ends analyses of Bridge2AI teaming stuff
-Version: 0.1.4
+Version: 0.1.5
 Authors@R: 
   c(
     person("Julie", "McMurry", "A" , "julie@tislab.org", role = c("ctb"),
            comment = c(ORCID = "0000-0002-9353-5498", "Largely responsible for the underlying data from members")),
-    person("Corey", "Cox", , "corey@tislab", role = c("ctb"),
-           comment = c(ORCID = "0000-0001-9042-5982")),
     person("Sean", "Davis", , "seandavi@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8991-6458"))
     )
@@ -30,6 +28,8 @@ Suggests: d3heatmap,
     pkgdown,
     testthat (>= 3.0.0),
     rbibutils
+Remotes:
+    talgalili/d3heatmap
 URL: https://github.com/seandavi/bridge2ai_teaming_scratchpad,
     https://seandavi.github.io/bridge2ai_teaming_scratchpad/
 BugReports: https://github.com/seandavi/bridge2ai_teaming_scratchpad/issues/new
