@@ -27,7 +27,8 @@ Imports: httr,
 Suggests: heatmaply,
     pkgdown,
     testthat (>= 3.0.0),
-    rbibutils
+    rbibutils,
+    ComplexHeatmap
 URL: https://github.com/seandavi/bridge2ai_teaming_scratchpad,
     https://seandavi.github.io/bridge2ai_teaming_scratchpad/
 BugReports: https://github.com/seandavi/bridge2ai_teaming_scratchpad/issues/new
