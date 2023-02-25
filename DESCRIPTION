@@ -23,7 +23,8 @@ Imports: httr,
     rmarkdown,
     googlesheets4,
     lubridate,
-    ggplot2
+    ggplot2,
+    readr
 Suggests: heatmaply,
     pkgdown,
     testthat (>= 3.0.0),
