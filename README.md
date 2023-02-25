@@ -80,6 +80,8 @@ dplyr::glimpse(work_details)
 
 ## Bridge2AI Expertise analysis
 
+See the [vignettes directory](vignettes).
+
 ## The Bridge2AI Program
 
 The NIH Common Fund’s Bridge to Artificial Intelligence (Bridge2AI)

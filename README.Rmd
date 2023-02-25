@@ -59,7 +59,7 @@ dplyr::glimpse(work_details)
 
 ## Bridge2AI Expertise analysis
 
-
+See the [vignettes directory](vignettes).
 
 ## The Bridge2AI Program
 
