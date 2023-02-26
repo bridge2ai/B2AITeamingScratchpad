@@ -1,6 +1,6 @@
 Package: B2AITeamingScratchpad
 Title: Just a scratchpad for odds-and-ends analyses of Bridge2AI teaming stuff
-Version: 0.1.6
+Version: 0.1.7
 Authors@R: 
   c(
     person("Julie", "McMurry", "A" , "julie@tislab.org", role = c("ctb"),
@@ -24,7 +24,8 @@ Imports: httr,
     googlesheets4,
     lubridate,
     ggplot2,
-    readr
+    readr,
+    visNetwork
 Suggests: heatmaply,
     pkgdown,
     testthat (>= 3.0.0),

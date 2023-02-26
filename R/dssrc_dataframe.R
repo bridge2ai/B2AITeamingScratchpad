@@ -3,6 +3,10 @@
 #' The dsSrc dataset is maintained by Julie
 #' and contains most of the relevant onboarding
 #' information.
+#' 
+#' @family data_import
+#'
+#' @author seandavi@gmail.com
 #'
 #' @examples
 #' dssrc = dssrc_dataframe()

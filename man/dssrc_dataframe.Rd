@@ -17,3 +17,11 @@ colnames(dssrc)
 dplyr::glimpse(dssrc)
 
 }
+\seealso{
+Other data_import: 
+\code{\link{descriptor_terms}()}
+}
+\author{
+seandavi@gmail.com
+}
+\concept{data_import}
