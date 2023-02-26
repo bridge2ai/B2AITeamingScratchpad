@@ -1,0 +1,10 @@
+pandoc: 3.0.1
+pkgdown: 2.0.7
+pkgdown_sha: ~
+articles:
+  b2ai_expertise: b2ai_expertise.html
+last_built: 2023-02-26T17:48Z
+urls:
+  reference: https://seandavi.github.io/B2AITeamingDashboard/reference
+  article: https://seandavi.github.io/B2AITeamingDashboard/articles
+
