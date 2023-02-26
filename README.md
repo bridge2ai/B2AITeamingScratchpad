@@ -13,7 +13,7 @@ so:
 
 ``` r
 library(remotes)
-remotes::install_github('seandavi/B2AITeamingScratchpad')
+remotes::install_github('bridge2ai/B2AITeamingScratchpad')
 ```
 
 ## Example
